@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extra_style %}
+{% endblock %}
+
+{% block content %}
+<div class="m-3">
+    <h1>結果</h1>
+    <p>得点 : {{ quiz_answer.score }}点</p>
+    <p>得点率 : {{ quiz_answer.answer_rate }}%</p>
+    <div class="col text-center">
+        <a href="{% url 'answer_quiz_list' %}" class="btn btn-secondary" type="button">クイズ一覧に戻る</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

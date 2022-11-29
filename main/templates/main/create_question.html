@@ -1,0 +1,56 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extra_style %}
+{% endblock %}
+
+{% block content %}
+<div class="m-3">
+    <form action="{% url 'create_question' quiz_id %}" method="POST">
+        {% csrf_token %}
+        <h1>第{{next_question_num}}問目</h1>
+        <label for="{{question_form.question.label}}">問題</label>
+        {{ question_form.question }}
+        <div class="mt-2">
+            <label for="{{choice_form.choice.label}}">選択肢1</label>
+            {{ choice_form.choice }}
+            <input type="radio" id="0" name="is_answer" value=0 required>
+            <label for="0">正解</label><br>
+        </div>
+
+        <div class="mt-2">
+            <label for="{{choice_form.choice.label}}">選択肢2</label>
+            {{ choice_form.choice }}
+            <input type="radio" id="1" name="is_answer" value=1 required>
+            <label for="1">正解</label><br>
+        </div>
+
+        <div class="mt-2">
+            <label for="{{choice_form.choice.label}}">選択肢3</label>
+            {{ choice_form.choice }}
+            <input type="radio" id="2" name="is_answer" value=2 required>
+            <label for="2">正解</label><br>
+        </div>
+
+        <div class="mt-2">
+            <label for="{{choice_form.choice.label}}">選択肢4</label>
+            {{ choice_form.choice }}
+            <input type="radio" id="3" name="is_answer" value=3 required>
+            <label for="3">正解</label><br>
+        </div>
+
+        <div class="mx-auto mt-3" style="width: 200px;">
+            <div class='btn-toolbar' role="toolbar">
+                <div>
+                    {% if next_question_num != 1 %}
+                        <a href="{% url 'home' %}" class="btn btn-secondary">完了する</a>
+                    {% endif %}
+                    <button class="btn btn-secondary" type="submit">追加する</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

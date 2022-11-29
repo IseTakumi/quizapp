@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extra_style %}
+{% endblock %}
+
+{% block content %}
+<div class="m-3">
+    <div class="d-grid gap-2">
+        <a href="{% url 'create_quiz' %}" class="btn btn-secondary" type="button">問題を作成する</a>
+    </div>
+
+    {% for quiz in quiz_list %}
+    <div class="card-body my-3">
+        <h5 class="card-title mb-2">{{ quiz.title }}</h5>
+        <a href="{% url 'quiz_information' quiz.id %}" class="btn btn-secondary">問題の詳細</a>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

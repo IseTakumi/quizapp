@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extra_style %}
+{% endblock %}
+{% block content %}
+<div class="m-3">
+    {% if quiz_information %}
+        <h1>{{quiz_information.quiz}}の結果</h1>
+        <p>回答数 : {{ quiz_answer|length }}</p>
+        <p>平均得点 : {{ quiz_information.average_score|floatformat:2 }}点</p>
+        <p>得点率 : {{ quiz_information.answer_rate|floatformat:2 }}%</p>
+        <p></p>
+        <div class="col text-center">
+            <a href="{% url 'home' %}" class="btn btn-secondary" type="button">クイズ一覧に戻る</a>
+        </div>
+    {% else %}
+        <p>このクイズの情報はありません</p>
+    {% endif %}
+</div>
+{% endblock %}

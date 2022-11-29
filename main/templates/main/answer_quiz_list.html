@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extra_style %}
+{% endblock %}
+
+{% block content %}
+<div class="m-3">
+
+            <form action="{% url 'answer_quiz_list' %}" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="keyword">
+                    <button class="btn btn-outline-secondary" type="submit">検索</button>
+                </div>
+            </form>
+
+            {% for quiz in quiz_list %}
+                <div class="my-3">
+                    <h5>{{quiz.title}}</h5>
+                    <p>{{quiz.description}}</p>
+                    <a href="{% url 'answer_quiz' quiz.id %}" class="btn btn-secondary">この問題を解く</a>
+                </div>
+            {% empty %}
+                <p>解くことができるクイズは存在しません</p>
+            {% endfor %}
+        </div>
+        {% endblock %}
+
+        {% block footer %}{% endblock %}
